@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B56BDB0A1CE3967C00875F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB091CE3967C00875F2E /* AppDelegate.swift */; };
-		B56BDB0C1CE3967C00875F2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB0B1CE3967C00875F2E /* ViewController.swift */; };
 		B56BDB0F1CE3967C00875F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56BDB0D1CE3967C00875F2E /* Main.storyboard */; };
 		B56BDB121CE3967C00875F2E /* TutuTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB101CE3967C00875F2E /* TutuTest.xcdatamodeld */; };
 		B56BDB141CE3967C00875F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B56BDB131CE3967C00875F2E /* Assets.xcassets */; };
 		B56BDB171CE3967C00875F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56BDB151CE3967C00875F2E /* LaunchScreen.storyboard */; };
 		B56BDB221CE3967C00875F2E /* TutuTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB211CE3967C00875F2E /* TutuTestTests.swift */; };
+		B56BDB2D1CE3C67800875F2E /* allStations.json in Resources */ = {isa = PBXBuildFile; fileRef = B56BDB2C1CE3C67800875F2E /* allStations.json */; };
+		B56BDB3E1CE3D8A300875F2E /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB3A1CE3D8A300875F2E /* City.swift */; };
+		B56BDB3F1CE3D8A300875F2E /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB3B1CE3D8A300875F2E /* City+CoreDataProperties.swift */; };
+		B56BDB401CE3D8A300875F2E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB3C1CE3D8A300875F2E /* Station.swift */; };
+		B56BDB411CE3D8A300875F2E /* Station+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB3D1CE3D8A300875F2E /* Station+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +33,6 @@
 /* Begin PBXFileReference section */
 		B56BDB061CE3967C00875F2E /* TutuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TutuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56BDB091CE3967C00875F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B56BDB0B1CE3967C00875F2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B56BDB0E1CE3967C00875F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B56BDB111CE3967C00875F2E /* TutuTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TutuTest.xcdatamodel; sourceTree = "<group>"; };
 		B56BDB131CE3967C00875F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +41,11 @@
 		B56BDB1D1CE3967C00875F2E /* TutuTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TutuTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56BDB211CE3967C00875F2E /* TutuTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutuTestTests.swift; sourceTree = "<group>"; };
 		B56BDB231CE3967C00875F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B56BDB2C1CE3C67800875F2E /* allStations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allStations.json; sourceTree = "<group>"; };
+		B56BDB3A1CE3D8A300875F2E /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		B56BDB3B1CE3D8A300875F2E /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "City+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B56BDB3C1CE3D8A300875F2E /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		B56BDB3D1CE3D8A300875F2E /* Station+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Station+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +88,16 @@
 			isa = PBXGroup;
 			children = (
 				B56BDB091CE3967C00875F2E /* AppDelegate.swift */,
-				B56BDB0B1CE3967C00875F2E /* ViewController.swift */,
 				B56BDB0D1CE3967C00875F2E /* Main.storyboard */,
 				B56BDB131CE3967C00875F2E /* Assets.xcassets */,
 				B56BDB151CE3967C00875F2E /* LaunchScreen.storyboard */,
 				B56BDB181CE3967C00875F2E /* Info.plist */,
+				B56BDB3A1CE3D8A300875F2E /* City.swift */,
+				B56BDB3B1CE3D8A300875F2E /* City+CoreDataProperties.swift */,
+				B56BDB3C1CE3D8A300875F2E /* Station.swift */,
+				B56BDB3D1CE3D8A300875F2E /* Station+CoreDataProperties.swift */,
 				B56BDB101CE3967C00875F2E /* TutuTest.xcdatamodeld */,
+				B56BDB2C1CE3C67800875F2E /* allStations.json */,
 			);
 			path = TutuTest;
 			sourceTree = "<group>";
@@ -184,6 +196,7 @@
 			files = (
 				B56BDB171CE3967C00875F2E /* LaunchScreen.storyboard in Resources */,
 				B56BDB141CE3967C00875F2E /* Assets.xcassets in Resources */,
+				B56BDB2D1CE3C67800875F2E /* allStations.json in Resources */,
 				B56BDB0F1CE3967C00875F2E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,9 +215,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B56BDB0C1CE3967C00875F2E /* ViewController.swift in Sources */,
+				B56BDB3F1CE3D8A300875F2E /* City+CoreDataProperties.swift in Sources */,
+				B56BDB401CE3D8A300875F2E /* Station.swift in Sources */,
+				B56BDB411CE3D8A300875F2E /* Station+CoreDataProperties.swift in Sources */,
 				B56BDB121CE3967C00875F2E /* TutuTest.xcdatamodeld in Sources */,
 				B56BDB0A1CE3967C00875F2E /* AppDelegate.swift in Sources */,
+				B56BDB3E1CE3D8A300875F2E /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

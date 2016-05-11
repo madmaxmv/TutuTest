@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Saving data form .json to CoreData.
+        importJSONDataIfNeeded()
+        
         return true
     }
 
@@ -106,6 +110,79 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: - First loanch, loading data from .json to CoreData
+    
+    func importJSONDataIfNeeded() {
+        let fetchRequest = NSFetchRequest(entityName: "City")
+        var error: NSError? = nil
+        
+        let cityCount =  managedObjectContext.countForFetchRequest(fetchRequest, error: &error);
+        if (cityCount == 0) {
+            importJSONData()
+        }
+    }
+    
+    func importJSONData() {
+        let allStationsURL = NSBundle.mainBundle().URLForResource("allStations", withExtension: "json")
+        guard let _ = allStationsURL else {
+            return
+        }
+        let allStationsData = NSData(contentsOfURL: allStationsURL!)
+        do {
+            let allStationDict = try NSJSONSerialization.JSONObjectWithData(allStationsData!, options: .AllowFragments) as! NSDictionary
+            
+            let citiesFrom = allStationDict.valueForKey("citiesFrom") as! NSArray
+            fillDataToCities(citiesFrom, withDirectionType: "citiesFrom")
+            
+            let citiesTo = allStationDict.valueForKey("citiesTo") as! NSArray
+            fillDataToCities(citiesTo, withDirectionType: "citiesTo")
 
+            
+        } catch let error as NSError {
+            print("Deserialization error: \(error.localizedDescription)")
+        }
+    }
+    
+    func fillDataToCities(citiesArray: NSArray, withDirectionType directionType: String){
+        
+        let cityEntity = NSEntityDescription.entityForName("City", inManagedObjectContext: managedObjectContext)
+        let stationEntity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedObjectContext)
+        
+        for cityDict in citiesArray {
+            
+            let city = City(entity: cityEntity!, insertIntoManagedObjectContext: managedObjectContext)
+            city.countryTitle = cityDict.valueForKey("countryTitle") as? String
+            city.directionType = directionType
+            
+            let point = cityDict.valueForKey("point") as! NSDictionary
+            city.latitude = point.valueForKey("latitude") as? Double
+            city.longitude = point.valueForKey("longitude") as? Double
+            
+            city.districtTitle = cityDict.valueForKey("districtTitle") as? String
+            city.cityId = cityDict.valueForKey("cityId") as? NSNumber
+            city.cityTitle = cityDict.valueForKey("cityTitle") as? String
+            city.regionTitle = cityDict.valueForKey("regionTitle") as? String
+            
+            let mutableOrderedSetOfCityStations = NSMutableOrderedSet()
+            let stationsArray = cityDict.valueForKey("stations") as! NSArray
+            
+            for stationDict in stationsArray {
+                
+                let station = Station(entity: stationEntity!, insertIntoManagedObjectContext: managedObjectContext)
+                mutableOrderedSetOfCityStations.addObject(station)
+                
+                station.stationId = stationDict.valueForKey("stationId") as? NSNumber
+                station.city = city
+                station.stationTitle = stationDict.valueForKey("stationTitle") as? String
+                
+                let point = stationDict.valueForKey("point") as! NSDictionary
+                station.longitude = point.valueForKey("longitude") as? Double
+                station.latitude = point.valueForKey("latitude") as? Double
+            }
+            city.stations = mutableOrderedSetOfCityStations
+        }
+        saveContext()
+    }
 }
 

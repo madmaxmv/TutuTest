@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Saving data form .json to CoreData.
+        // Saving data form .json to CoreData.  
         importJSONDataIfNeeded()
         
         return true
@@ -131,7 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let allStationsData = NSData(contentsOfURL: allStationsURL!)
         do {
             let allStationDict = try NSJSONSerialization.JSONObjectWithData(allStationsData!, options: .AllowFragments) as! NSDictionary
-            
+            // разбор совершенно идентичен для citiesFrom и citiesTo 
+            // еденственное необходимо так же сохранить directionType для последубщего поиска нужных элементов
             let citiesFrom = allStationDict.valueForKey("citiesFrom") as! NSArray
             fillDataToCities(citiesFrom, withDirectionType: "citiesFrom")
             
@@ -145,6 +146,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func fillDataToCities(citiesArray: NSArray, withDirectionType directionType: String){
+        // функция разбирает массив городов, соответственно добавляя каждый элемент в CoreData 
+        // вместе с этим добавляются и станции для каждого города. 
         
         let cityEntity = NSEntityDescription.entityForName("City", inManagedObjectContext: managedObjectContext)
         let stationEntity = NSEntityDescription.entityForName("Station", inManagedObjectContext: managedObjectContext)

@@ -18,6 +18,6 @@ extension Station {
     @NSManaged var stationTitle: String?
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
-    @NSManaged var city: City?
+    @NSManaged var city: City
 
 }

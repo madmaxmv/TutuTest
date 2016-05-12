@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        // transfer managedObjectContext to StationListViewController
+        let tabBarController = window?.rootViewController as! UITabBarController
+        if let tabBarControllers = tabBarController.viewControllers {
+            let navigationController = tabBarControllers[0] as! UINavigationController
+            let scheduleController =  navigationController.topViewController as! ScheduleTableViewController
+            
+            scheduleController.managedContext = managedObjectContext
+        }
+//        let mainStoryboard = window?.rootViewController?.storyboard //UIStoryboard(name: "Main", bundle: nil)
+//        let stationListController = mainStoryboard!.instantiateViewControllerWithIdentifier("StationsListTableView") as! StationsListViewController
+//        stationListController.managedContext = managedObjectContext
         
         // Saving data form .json to CoreData.  
         importJSONDataIfNeeded()

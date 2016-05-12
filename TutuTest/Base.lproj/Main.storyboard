@@ -18,7 +18,7 @@
                             <tableViewSection headerTitle="Откуда" id="VOn-PO-0Sd">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="n4N-le-7k6">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n4N-le-7k6" id="smB-h2-kNt">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -42,7 +42,7 @@
                             <tableViewSection headerTitle="Куда" id="DIe-FE-1hC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="rk6-Yb-uBo">
-                                        <rect key="frame" x="0.0" y="207.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="208" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rk6-Yb-uBo" id="cc0-KA-s5S">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -66,7 +66,7 @@
                             <tableViewSection headerTitle="Дата отправления" id="NcC-t9-Vkb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5mt-z7-YgJ">
-                                        <rect key="frame" x="0.0" y="301.5" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="302" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5mt-z7-YgJ" id="g0D-3n-U29">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -100,6 +100,7 @@
                         <outlet property="departureDateLabel" destination="3E8-mL-O7e" id="brJ-uE-at7"/>
                         <outlet property="destinationStationLabel" destination="40p-kd-UfH" id="Z4i-9O-4Wf"/>
                         <outlet property="dispatchStationLabel" destination="Bo8-NA-rVG" id="DIB-lB-GIJ"/>
+                        <segue destination="zAP-XH-Pye" kind="show" identifier="ShowStations" id="Abd-nl-9Ds"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-V4-VTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -125,21 +126,46 @@
             </objects>
             <point key="canvasLocation" x="1398" y="782"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Stations from/to-->
         <scene sceneID="k7i-AM-r5R">
             <objects>
-                <tableViewController id="zAP-XH-Pye" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TgX-bz-vJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="StationsListTableView" id="zAP-XH-Pye" customClass="StationsListViewController" customModule="TutuTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qYM-bE-tDe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Название станции" id="Wtt-VF-ZfU">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="zAP-XH-Pye" id="fBv-kq-uSg"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Yhy-Ps-5ra">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="StationCell" textLabel="OMf-CU-U9d" detailTextLabel="0NW-ar-frM" style="IBUITableViewCellStyleSubtitle" id="Yhy-Ps-5ra">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yhy-Ps-5ra" id="V3V-qu-cwK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="553" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OMf-CU-U9d">
+                                            <rect key="frame" x="15" y="6" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0NW-ar-frM">
+                                            <rect key="frame" x="15" y="26" width="41" height="13"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -148,10 +174,13 @@
                             <outlet property="delegate" destination="zAP-XH-Pye" id="p0I-UO-kZX"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Stations from/to" id="y9T-z7-5ph"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Wtt-VF-ZfU" id="y2x-YA-1qf"/>
+                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TgX-bz-vJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2096" y="782"/>
+            <point key="canvasLocation" x="2160" y="782"/>
         </scene>
         <!--Расписание-->
         <scene sceneID="RXy-WQ-FLm">

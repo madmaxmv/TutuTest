@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ScheduleTableViewController: UITableViewController {
 
@@ -15,6 +16,8 @@ class ScheduleTableViewController: UITableViewController {
     @IBOutlet weak var departureDateLabel: UILabel!
     @IBOutlet weak var datePickerCell: UITableViewCell!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    var managedContext: NSManagedObjectContext!
     
     var dispatchStation: Station?
     var destinationStation: Station?
@@ -71,12 +74,18 @@ class ScheduleTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if (indexPath.section == 2 && indexPath.row == 0) {
-            if datePickerIsVisible {
-                hideDatePickerView()
-            } else {
-                showDatePickerView()
-            }
+        switch (indexPath.section, indexPath.row) {
+            case (0,_) :
+                self.performSegueWithIdentifier("ShowStations", sender: "citiesFrom")
+            case (1,_):
+                self.performSegueWithIdentifier("ShowStations", sender: "citiesTo")
+            case (2,0):
+                if datePickerIsVisible {
+                    hideDatePickerView()
+                } else {
+                    showDatePickerView()
+                }
+            default: break
         }
     }
 
@@ -96,15 +105,20 @@ class ScheduleTableViewController: UITableViewController {
         return super.tableView(tableView, indentationLevelForRowAtIndexPath: indexPath)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowStations" {
+            let controller = segue.destinationViewController as! StationsListViewController
+            controller.directionType = sender as! String
+            controller.managedContext = managedContext
+        }
     }
-    */
+    
     
     // MARK: - Date Picker view 
     

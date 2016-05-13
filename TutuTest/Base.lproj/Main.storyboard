@@ -435,7 +435,7 @@
         <!--О приложении-->
         <scene sceneID="r7J-DW-eoJ">
             <objects>
-                <viewController id="RdY-6P-b4I" sceneMemberID="viewController">
+                <viewController id="RdY-6P-b4I" customClass="AboutViewController" customModule="TutuTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yYz-dJ-ah9"/>
                         <viewControllerLayoutGuide type="bottom" id="zFn-Pw-11w"/>
@@ -443,13 +443,64 @@
                     <view key="view" contentMode="scaleToFill" id="Gxs-6V-b6W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="appName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBW-L0-6me">
+                                <rect key="frame" x="259" y="41" width="83" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="A1u-rc-Z4T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="appVersion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBx-6W-Zdd">
+                                <rect key="frame" x="262" y="72" width="77" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="copyright" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdt-Yq-ozK">
+                                <rect key="frame" x="267" y="514" width="66" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8QU-xJ-9zi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3j-2U-G6C">
+                                <rect key="frame" x="8" y="108" width="584" height="382"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P3j-2U-G6C" firstAttribute="centerX" secondItem="Gxs-6V-b6W" secondAttribute="centerX" id="2ZJ-0P-mjT"/>
+                            <constraint firstItem="jBW-L0-6me" firstAttribute="top" secondItem="yYz-dJ-ah9" secondAttribute="bottom" constant="21" id="8Rg-Ra-xIE"/>
+                            <constraint firstItem="mdt-Yq-ozK" firstAttribute="centerX" secondItem="Gxs-6V-b6W" secondAttribute="centerX" id="9z9-4q-o9y"/>
+                            <constraint firstItem="mdt-Yq-ozK" firstAttribute="top" secondItem="P3j-2U-G6C" secondAttribute="bottom" constant="24" id="CK4-pu-MEk"/>
+                            <constraint firstItem="jBW-L0-6me" firstAttribute="centerX" secondItem="Gxs-6V-b6W" secondAttribute="centerX" id="KYU-o8-pZC"/>
+                            <constraint firstItem="P3j-2U-G6C" firstAttribute="top" secondItem="VBx-6W-Zdd" secondAttribute="bottom" constant="18" id="TW9-aD-e4g"/>
+                            <constraint firstItem="VBx-6W-Zdd" firstAttribute="centerX" secondItem="Gxs-6V-b6W" secondAttribute="centerX" id="brZ-lc-e1A"/>
+                            <constraint firstItem="P3j-2U-G6C" firstAttribute="leading" secondItem="Gxs-6V-b6W" secondAttribute="leadingMargin" constant="-12" id="hf5-KO-Nxc"/>
+                            <constraint firstItem="VBx-6W-Zdd" firstAttribute="top" secondItem="jBW-L0-6me" secondAttribute="bottom" constant="8" id="hx1-Ga-WLR"/>
+                            <constraint firstItem="zFn-Pw-11w" firstAttribute="top" secondItem="mdt-Yq-ozK" secondAttribute="bottom" constant="16" id="p1q-tN-jIE"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="О приложении" id="19X-6W-kNW"/>
+                    <connections>
+                        <outlet property="appNameLabel" destination="jBW-L0-6me" id="2HZ-63-aYh"/>
+                        <outlet property="appVersionLabel" destination="VBx-6W-Zdd" id="TM5-c1-t0c"/>
+                        <outlet property="copyrightLabel" destination="mdt-Yq-ozK" id="ApW-zs-2i4"/>
+                        <outlet property="readmeTextView" destination="P3j-2U-G6C" id="Twl-ix-8MX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPM-Pe-wMI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="1483"/>
+            <point key="canvasLocation" x="644" y="1481"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="eL9-lR-a2w">

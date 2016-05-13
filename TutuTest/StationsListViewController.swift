@@ -9,10 +9,15 @@
 import UIKit
 import CoreData
 
+protocol StationsListViewControllerDelegate {
+    func stationsListDidSelectStation(station: Station, withDirection direction: String)
+}
+
 class StationsListViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var stationsListDelegate: StationsListViewControllerDelegate!
     var managedContext: NSManagedObjectContext!
     var directionType: String!
     
@@ -40,12 +45,13 @@ class StationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        performFetch()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        if directionType == "citiesTo"{
+            self.title = "To"
+        } else {
+            self.title = "From"
+        }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        performFetch()
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,42 +87,31 @@ class StationsListViewController: UITableViewController {
         return cell
     }
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let station = fetchedResultsController.objectAtIndexPath(indexPath) as! Station
+        stationsListDelegate.stationsListDidSelectStation(station, withDirection: directionType)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        // возвращение обратно к рассписанию:
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail" {
+            let controller = segue.destinationViewController as! StationDetailViewController
+            
+            if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
+                controller.station = fetchedResultsController.objectAtIndexPath(indexPath) as! Station
+            }
+        }
     }
-    */
+    
     
     func performFetch() {
         do {
@@ -129,7 +124,7 @@ class StationsListViewController: UITableViewController {
 }
 
 extension StationsListViewController: NSFetchedResultsControllerDelegate {
-    // Так как изменения вносится не будут, реализовывть функции вызываемые при изменении нет необходимости
+    // Так как изменения вносится не будут, то реализовывть функции вызываемые при изменении нет необходимости
 }
 
 extension StationsListViewController: UISearchBarDelegate {
@@ -143,15 +138,7 @@ extension StationsListViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        performSearch()
-    }
-    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         performSearch()
-    }
-    
-    func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
-        return .TopAttached
     }
 }

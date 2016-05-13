@@ -20,6 +20,7 @@
 		B56BDB411CE3D8A300875F2E /* Station+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB3D1CE3D8A300875F2E /* Station+CoreDataProperties.swift */; };
 		B56BDB431CE4574900875F2E /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB421CE4574900875F2E /* ScheduleTableViewController.swift */; };
 		B56BDB471CE4AC3A00875F2E /* StationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB461CE4AC3A00875F2E /* StationsListViewController.swift */; };
+		B56BDB491CE51E4F00875F2E /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB481CE51E4F00875F2E /* StationDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		B56BDB3D1CE3D8A300875F2E /* Station+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Station+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B56BDB421CE4574900875F2E /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		B56BDB461CE4AC3A00875F2E /* StationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsListViewController.swift; sourceTree = "<group>"; };
+		B56BDB481CE51E4F00875F2E /* StationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				B56BDB091CE3967C00875F2E /* AppDelegate.swift */,
 				B56BDB421CE4574900875F2E /* ScheduleTableViewController.swift */,
 				B56BDB461CE4AC3A00875F2E /* StationsListViewController.swift */,
+				B56BDB481CE51E4F00875F2E /* StationDetailViewController.swift */,
 				B56BDB0D1CE3967C00875F2E /* Main.storyboard */,
 				B56BDB131CE3967C00875F2E /* Assets.xcassets */,
 				B56BDB151CE3967C00875F2E /* LaunchScreen.storyboard */,
@@ -227,6 +230,7 @@
 				B56BDB121CE3967C00875F2E /* TutuTest.xcdatamodeld in Sources */,
 				B56BDB431CE4574900875F2E /* ScheduleTableViewController.swift in Sources */,
 				B56BDB0A1CE3967C00875F2E /* AppDelegate.swift in Sources */,
+				B56BDB491CE51E4F00875F2E /* StationDetailViewController.swift in Sources */,
 				B56BDB471CE4AC3A00875F2E /* StationsListViewController.swift in Sources */,
 				B56BDB3E1CE3D8A300875F2E /* City.swift in Sources */,
 			);

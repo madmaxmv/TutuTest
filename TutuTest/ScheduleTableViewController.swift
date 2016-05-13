@@ -116,6 +116,7 @@ class ScheduleTableViewController: UITableViewController {
             let controller = segue.destinationViewController as! StationsListViewController
             controller.directionType = sender as! String
             controller.managedContext = managedContext
+            controller.stationsListDelegate = self
         }
     }
     
@@ -166,5 +167,18 @@ class ScheduleTableViewController: UITableViewController {
         tableView.deleteRowsAtIndexPaths([indexPathDatePicker], withRowAnimation: .Fade)
         
         tableView.endUpdates()
+    }
+}
+
+extension ScheduleTableViewController: StationsListViewControllerDelegate {
+    
+    func stationsListDidSelectStation(station: Station, withDirection direction: String) {
+        if (direction == "citiesFrom") {
+            dispatchStation = station
+            dispatchStationLabel.text = dispatchStation?.stationTitle
+        } else {
+            destinationStation = station
+            destinationStationLabel.text = destinationStation?.stationTitle
+        }
     }
 }

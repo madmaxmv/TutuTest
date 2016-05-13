@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let allStationDict = try NSJSONSerialization.JSONObjectWithData(allStationsData!, options: .AllowFragments) as! NSDictionary
             // разбор совершенно идентичен для citiesFrom и citiesTo 
-            // еденственное необходимо так же сохранить directionType для последубщего поиска нужных элементов
+            // необходимо так же сохранить directionType для последубщего поиска нужных элементов
             let citiesFrom = allStationDict.valueForKey("citiesFrom") as! NSArray
             fillDataToCities(citiesFrom, withDirectionType: "citiesFrom")
             

@@ -75,13 +75,11 @@ class StationsListViewController: UITableViewController {
         let sectionInfo = fetchedResultsController.sections![section]
         return sectionInfo.numberOfObjects;
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StationCell", forIndexPath: indexPath)
        
         let station = fetchedResultsController.objectAtIndexPath(indexPath) as! Station
-        
         cell.textLabel?.text = station.stationTitle
         cell.detailTextLabel?.text = station.city.cityTitle
         return cell
@@ -92,10 +90,9 @@ class StationsListViewController: UITableViewController {
         stationsListDelegate.stationsListDidSelectStation(station, withDirection: directionType)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        // возвращение обратно к рассписанию:
+        // возвращение обратно к расписанию:
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
-
     
     // MARK: - Navigation
 
@@ -112,7 +109,6 @@ class StationsListViewController: UITableViewController {
         }
     }
     
-    
     func performFetch() {
         do {
             try fetchedResultsController.performFetch()
@@ -120,7 +116,6 @@ class StationsListViewController: UITableViewController {
             print("CoreData Error: \(error)")
         }
     }
-
 }
 
 extension StationsListViewController: NSFetchedResultsControllerDelegate {

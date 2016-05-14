@@ -23,14 +23,9 @@ class StationDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Station"
         if let station = station {
             stationTitleLabel.text = station.stationTitle
-            
-            // для отображения названия станции в две строки
-            stationTitleLabel.lineBreakMode = .ByWordWrapping
-            stationTitleLabel.numberOfLines = 2
-            stationTitleLabel.sizeToFit()
-            
             latitudeLabel.text = station.latitude?.stringValue
             longitudeLabel.text = station.longitude?.stringValue
             cityLabel.text = station.city.cityTitle
@@ -39,9 +34,27 @@ class StationDetailViewController: UITableViewController {
             regionLabel.text = station.city.regionTitle
         }
     }
+    
+    // так как значения некоторых полей могут превысить ширину экрана
+    // корректируем высоту ячеек таблицы для того, что бы поместился весь контент
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.section == 0 && indexPath.row == 0) {
-            return stationTitleLabel.frame.size.height + 5
+            let text = stationTitleLabel.text! as NSString
+            let constrain = CGSizeMake(UIScreen.mainScreen().bounds.width - 10, 20000)
+            let size = text.boundingRectWithSize(constrain, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)], context: nil)
+            return max(size.height + 10, 44)
+        } else if indexPath.section == 1 {
+            var text: String
+            switch indexPath.row {
+                case 0: text = cityLabel.text!
+                case 1: text = countryLabel.text!
+                case 2: text = districtLabel.text!
+                case 3: text = regionLabel.text!
+                default: text = ""
+            }
+            let constrain = CGSizeMake(UIScreen.mainScreen().bounds.width - 90, 20000)
+            let size = text.boundingRectWithSize(constrain, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(17)], context: nil)
+            return max(size.height + 10, 44)
         }
         return 44
     }

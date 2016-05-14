@@ -29,27 +29,19 @@ class ScheduleTableViewController: UITableViewController {
         super.viewDidLoad()
 
         datePicker.datePickerMode = .Date
-        
         if let dispSt = dispatchStation {
             dispatchStationLabel.text = dispSt.stationTitle
         }
         if let destSt = destinationStation {
             destinationStationLabel.text = destSt.stationTitle
         }
+        
         updateDueDateLabel()
-
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Actions 
     
     @IBAction func dateChange(datePicker: UIDatePicker) {
-        // событие, вызываемое при изменении даты 
-        
         departureDate = datePicker.date
         updateDueDateLabel()
     }
@@ -104,7 +96,6 @@ class ScheduleTableViewController: UITableViewController {
         }
         return super.tableView(tableView, indentationLevelForRowAtIndexPath: indexPath)
     }
-
     
     // MARK: - Navigation
 
@@ -119,7 +110,6 @@ class ScheduleTableViewController: UITableViewController {
             controller.stationsListDelegate = self
         }
     }
-    
     
     // MARK: - Date Picker view 
     
@@ -156,16 +146,14 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     func hideDatePickerView() {
-         datePickerIsVisible = false
+        datePickerIsVisible = false
         
         let indexPathDateRow = NSIndexPath(forRow: 0, inSection: 2)
         let indexPathDatePicker = NSIndexPath(forRow: 1, inSection: 2)
         
         tableView.beginUpdates()
-        
         tableView.reloadRowsAtIndexPaths([indexPathDateRow], withRowAnimation: .None)
         tableView.deleteRowsAtIndexPaths([indexPathDatePicker], withRowAnimation: .Fade)
-        
         tableView.endUpdates()
     }
 }

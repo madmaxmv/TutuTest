@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B56237071CE6020500F0AE74 /* Задание.md in Sources */ = {isa = PBXBuildFile; fileRef = B56237061CE6020500F0AE74 /* Задание.md */; };
 		B56BDB0A1CE3967C00875F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB091CE3967C00875F2E /* AppDelegate.swift */; };
 		B56BDB0F1CE3967C00875F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B56BDB0D1CE3967C00875F2E /* Main.storyboard */; };
 		B56BDB121CE3967C00875F2E /* TutuTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B56BDB101CE3967C00875F2E /* TutuTest.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B56237061CE6020500F0AE74 /* Задание.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Задание.md"; sourceTree = "<group>"; };
 		B56BDB061CE3967C00875F2E /* TutuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TutuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56BDB091CE3967C00875F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B56BDB0E1CE3967C00875F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		B56BDAFD1CE3967C00875F2E = {
 			isa = PBXGroup;
 			children = (
+				B56237061CE6020500F0AE74 /* Задание.md */,
 				B56BDB081CE3967C00875F2E /* TutuTest */,
 				B56BDB201CE3967C00875F2E /* TutuTestTests */,
 				B56BDB071CE3967C00875F2E /* Products */,
@@ -236,6 +239,7 @@
 				B56BDB411CE3D8A300875F2E /* Station+CoreDataProperties.swift in Sources */,
 				B56BDB121CE3967C00875F2E /* TutuTest.xcdatamodeld in Sources */,
 				B56BDB431CE4574900875F2E /* ScheduleTableViewController.swift in Sources */,
+				B56237071CE6020500F0AE74 /* Задание.md in Sources */,
 				B56BDB0A1CE3967C00875F2E /* AppDelegate.swift in Sources */,
 				B56BDB491CE51E4F00875F2E /* StationDetailViewController.swift in Sources */,
 				B56BDB471CE4AC3A00875F2E /* StationsListViewController.swift in Sources */,
@@ -367,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TutuTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = none.TutuTest;
@@ -378,6 +383,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TutuTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = none.TutuTest;
@@ -428,6 +435,7 @@
 				B56BDB281CE3967C00875F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B56BDB291CE3967C00875F2E /* Build configuration list for PBXNativeTarget "TutuTestTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +444,7 @@
 				B56BDB2B1CE3967C00875F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

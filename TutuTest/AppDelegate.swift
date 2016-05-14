@@ -26,12 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             scheduleController.managedContext = managedObjectContext
         }
-//        let mainStoryboard = window?.rootViewController?.storyboard //UIStoryboard(name: "Main", bundle: nil)
-//        let stationListController = mainStoryboard!.instantiateViewControllerWithIdentifier("StationsListTableView") as! StationsListViewController
-//        stationListController.managedContext = managedObjectContext
-        
-        // Saving data form .json to CoreData.  
-        importJSONDataIfNeeded()
+
+        // Saving data form .json to CoreData.
+        dispatch_async(dispatch_get_main_queue()) {
+            self.importJSONDataIfNeeded()
+        }
         
         return true
     }
@@ -144,14 +143,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let allStationDict = try NSJSONSerialization.JSONObjectWithData(allStationsData!, options: .AllowFragments) as! NSDictionary
             // разбор совершенно идентичен для citiesFrom и citiesTo 
-            // необходимо так же сохранить directionType для последубщего поиска нужных элементов
+            // однако нужно сохранить directionType для последубщего поиска нужных элементов
             let citiesFrom = allStationDict.valueForKey("citiesFrom") as! NSArray
             fillDataToCities(citiesFrom, withDirectionType: "citiesFrom")
             
             let citiesTo = allStationDict.valueForKey("citiesTo") as! NSArray
             fillDataToCities(citiesTo, withDirectionType: "citiesTo")
 
-            
         } catch let error as NSError {
             print("Deserialization error: \(error.localizedDescription)")
         }

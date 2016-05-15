@@ -107,14 +107,17 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mr1-V4-VTU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="202" id="op2-bt-is0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="op2-bt-is0" id="xsq-6H-XjV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="201.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="179.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aKw-3r-Pya">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aKw-3r-Pya">
+                                <rect key="frame" x="140" y="-1" width="320" height="182"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="182" id="HRD-D7-apQ"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="484728780.50933897">
                                     <!--2016-05-12 06:53:00 +0000-->
                                 </date>
@@ -123,6 +126,10 @@
                                 </connections>
                             </datePicker>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="aKw-3r-Pya" firstAttribute="centerX" secondItem="xsq-6H-XjV" secondAttribute="centerX" id="RCa-an-Nc5"/>
+                            <constraint firstItem="aKw-3r-Pya" firstAttribute="centerY" secondItem="xsq-6H-XjV" secondAttribute="centerY" id="S3D-Lt-5pk"/>
+                        </constraints>
                     </tableViewCellContentView>
                 </tableViewCell>
             </objects>
@@ -484,9 +491,8 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3j-2U-G6C">
                                 <rect key="frame" x="8" y="108" width="584" height="382"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>

@@ -35,11 +35,10 @@ class ScheduleTableViewController: UITableViewController {
         if let destSt = destinationStation {
             destinationStationLabel.text = destSt.stationTitle
         }
-        
         updateDueDateLabel()
     }
 
-    // MARK: - Actions 
+    // MARK: - Actions
     
     @IBAction func dateChange(datePicker: UIDatePicker) {
         departureDate = datePicker.date
@@ -58,7 +57,7 @@ class ScheduleTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 2 && indexPath.row == 1 {
-            return 217;
+            return 180;
         }
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
@@ -161,10 +160,10 @@ class ScheduleTableViewController: UITableViewController {
 extension ScheduleTableViewController: StationsListViewControllerDelegate {
     
     func stationsListDidSelectStation(station: Station, withDirection direction: String) {
-        if (direction == "citiesFrom") {
+        if direction == "citiesFrom" {
             dispatchStation = station
             dispatchStationLabel.text = dispatchStation?.stationTitle
-        } else {
+        } else if direction == "citiesTo" {
             destinationStation = station
             destinationStationLabel.text = destinationStation?.stationTitle
         }

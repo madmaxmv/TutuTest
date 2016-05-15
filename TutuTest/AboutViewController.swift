@@ -31,7 +31,7 @@ class AboutViewController: UIViewController {
         
         appNameLabel.text = appName
         appVersionLabel.text = "Версия \(appVersion)"
-        
+        readmeTextView.font = UIFont.systemFontOfSize(14)
         if let readmeFile = NSBundle.mainBundle().pathForResource("README", ofType: "") {
             do {
                 let data = try String(contentsOfFile: readmeFile, encoding: NSUTF8StringEncoding)
@@ -40,8 +40,11 @@ class AboutViewController: UIViewController {
                  print("Error \(error)")
             }
         }
-        readmeTextView.font = UIFont(name: "System", size: 20)
-        
         copyrightLabel.text = "Copyright © 2016 Maxim. All rights reserved."
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        readmeTextView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }
 }

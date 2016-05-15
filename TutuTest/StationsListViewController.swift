@@ -45,12 +45,11 @@ class StationsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if directionType == "citiesTo"{
+        if directionType == "citiesTo" {
             self.title = "To"
-        } else {
+        } else if directionType == "citiesFrom" {
             self.title = "From"
         }
-
         performFetch()
     }
 
@@ -123,9 +122,9 @@ extension StationsListViewController: NSFetchedResultsControllerDelegate {
 }
 
 extension StationsListViewController: UISearchBarDelegate {
-    func performSearch() {
-        if searchBar.text! != ""{
-            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "(city.directionType == %@) AND (stationTitle contains[cd] %@)", self.directionType, searchBar.text!)
+    func performSearch(searchText: String) {
+        if searchText != "" {
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "(city.directionType == %@) AND (stationTitle contains[cd] %@)", self.directionType, searchText)
         } else {
             fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "city.directionType == %@", self.directionType)
         }
@@ -134,6 +133,6 @@ extension StationsListViewController: UISearchBarDelegate {
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        performSearch()
+        performSearch(searchText)
     }
 }
